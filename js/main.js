@@ -1,31 +1,18 @@
 $( document ).ready(function() {
 
-  // var msg = new SpeechSynthesisUtterance("Hello World");
-  // console.log(msg);
-  // window.speechSynthesis.speak(msg);
 
-//   var voices = window.speechSynthesis.getVoices();
-// // console.log(voices);
-//
-//   var length = voices.length;
-//
-//   for (var i=length; i--;) {
-//     console.log(voices[i]);
-//   }
-
-// var voices = window.speechSynthesis.getVoices();
-//
-// console.log(voices);
 
 if ('speechSynthesis' in window) {
   console.log('Speech synthesis supported!😎');
 
-  var readingvoice = "Fiona";
+  // SETTINGS
 
-  var voices = speechSynthesis.getVoices();
+  var readingvoice = "Fiona";
 
 
   var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );
+
+
 
   var u = new SpeechSynthesisUtterance();
 
@@ -35,7 +22,7 @@ if ('speechSynthesis' in window) {
   u.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == readingvoice; })[0];
 
   if (iOS == true) {
-    u.rate = 0.3;
+    u.rate = 0.5;
   }
 
   // window.speechSynthesis.speak(u);
@@ -43,18 +30,22 @@ if ('speechSynthesis' in window) {
   u.onend = function(event) { console.log('Speech complete'); }
   // console.log(u);
 
+  var voices = window.speechSynthesis.getVoices();
+  window.speechSynthesis.onvoiceschanged = function() {
 
-  speechSynthesis.getVoices().forEach(function(voice) {
-    console.log(voice.name, voice.default ? '(default)' :'');
+    console.log(voices);
+    window.speechSynthesis.forEach(function(voice) {
+      console.log(voice.name, voice.default ? '(default)' :'');
 
-    var node = document.getElementById('voices');
-    var newNode = document.createElement('li');
-    newNode.appendChild(document.createTextNode(voice.name, voice.default ? '(default)' :''));
-    node.appendChild(newNode);
+      var node = document.getElementById('voices');
+      var newNode = document.createElement('li');
+      newNode.appendChild(document.createTextNode(voice.name, voice.default ? '(default)' :''));
+      node.appendChild(newNode);
 
 
-  });
+    });
 
+};
 
   $( "#voices li" ).click(function() {
     console.log(this.innerHTML);
@@ -71,11 +62,16 @@ if ('speechSynthesis' in window) {
     $('#status').text('Stopped');
   }
 
+
+
+
+
+
   document.getElementById("play").onclick = function(){
-    console.log('Paused:');
-    console.log(window.speechSynthesis.paused);
-    console.log('Playing:');
-    console.log(window.speechSynthesis.speaking);
+    // console.log('Paused:');
+    // console.log(window.speechSynthesis.paused);
+    // console.log('Playing:');
+    // console.log(window.speechSynthesis.speaking);
 
 
     if (window.speechSynthesis.paused) {
@@ -83,7 +79,7 @@ if ('speechSynthesis' in window) {
       $('#status').text('Playing');
 
     } else if (window.speechSynthesis.speaking) {
-      window.speechSynthesis.pause();
+      window.speechSynthesis.pause(u);
       $('#status').text('Paused');
     } else {
       window.speechSynthesis.speak(u);
