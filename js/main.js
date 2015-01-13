@@ -34,7 +34,7 @@ if ('speechSynthesis' in window) {
   u.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Fiona'; })[0];
 
   if (iOS == true) {
-    u.rate = 0.5;
+    u.rate = 0.3;
   }
 
   // window.speechSynthesis.speak(u);
