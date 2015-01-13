@@ -44,7 +44,9 @@ $( document ).ready(function() {
       addVoices();
     }
 
-
+    u.onerror = function(event) {
+      console.log('An error occured with TTS.')
+    };
 
 
 
