@@ -21,45 +21,50 @@ if ('speechSynthesis' in window) {
   console.log('Speech synthesis supported!😎');
 
 
-  // var voices = speechSynthesis.getVoices();
-  // for(var i = 0; i < voices.length; i++ ) {
-  //   // console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
-  // }
+  var voices = speechSynthesis.getVoices();
 
 
+  var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );
 
   var u = new SpeechSynthesisUtterance();
 
-  u.text =document.getElementById("story").innerText; // get main article text
+  u.text = document.getElementById("story").innerText; // get main article text
   u.lang = 'en-GB'; // get from BBC domain
-  u.rate = 0.5;
+  u.rate = 0.9;
+  u.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Fiona'; })[0];
+
+  if (iOS == true) {
+    u.rate = 0.5;
+  }
 
   // window.speechSynthesis.speak(u);
 
   u.onend = function(event) { console.log('Speech complete'); }
-  console.log(u);
+  // console.log(u);
 
 
-  Object.keys(u).forEach(function(key) {
-    console.log(key, u[key]);
+  speechSynthesis.getVoices().forEach(function(voice) {
+    console.log(voice.name, voice.default ? '(default)' :'');
   });
 
 
-  document.getElementById("play").onclick  = function(){
-    window.speechSynthesis.speak(u);
-  };
-
-
-  document.getElementById("pause").onclick  = function(){
-    window.speechSynthesis.pause(u);
+  document.getElementById("play").onclick = function(){
+    console.log('Paused:');
     console.log(window.speechSynthesis.paused);
+    console.log('Playing:');
+    console.log(window.speechSynthesis.playing);
+
+
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume(u);
+    } else if (window.speechSynthesis.playing) {
+      window.speechSynthesis.pause();
+    } else {
+      window.speechSynthesis.speak(u);
+    }
   };
 
-    // document.getElementById("resume").onclick  = function(){
-    //
-    //   window.speechSynthesis.resume(u);
-    //
-    // };
+
 
 
 } else {

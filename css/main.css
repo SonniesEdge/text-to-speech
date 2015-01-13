@@ -5,6 +5,10 @@ img {
   height: auto;
 }
 
+.hidebydefault {
+  display: none;
+}
+
 html,
 button,
 input,
