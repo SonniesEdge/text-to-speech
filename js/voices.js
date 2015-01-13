@@ -8,28 +8,12 @@ $( document ).ready(function() {
   if ('speechSynthesis' in window) {
     console.log('Speech synthesis supported!😎');
 
-    //
-    //
-    // speechSynthesis.onvoiceschanged = function() {
-    //   var $voicelist = $('#voices');
-    //
-    //   speechSynthesis.getVoices().forEach(function(voice, index) {
-    //     console.log(index, voice.name, voice.default ? '(default)' :'');
-    //     var $option = $('<option>')
-    //     .val(index)
-    //     .html(voice.name + (voice.default ? ' (default)' :''));
-    //
-    //     $voicelist.append($option);
-    //   });
-    // }
-
 
 
 
     var u = new SpeechSynthesisUtterance();
     bedtimestory = document.getElementById("story").innerText; // get main article text
     // bedtimestory = "I'm a little teapot, short and stout. Here's my handle, here's my spout."
-    // console.log(bedtimestory);
     u.text = bedtimestory;
 
     u.rate = 0.9;
@@ -77,6 +61,8 @@ $( document ).ready(function() {
           return voice.name == useVoice;
         })[0];
       }
+
+      console.log(u.voice);
 
 
       if (window.speechSynthesis.paused) {
