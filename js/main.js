@@ -21,18 +21,18 @@ if ('speechSynthesis' in window) {
   console.log('Speech synthesis supported!😎');
 
 
-  var voices = speechSynthesis.getVoices();
-  for(var i = 0; i < voices.length; i++ ) {
-    // console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
-  }
+  // var voices = speechSynthesis.getVoices();
+  // for(var i = 0; i < voices.length; i++ ) {
+  //   // console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
+  // }
 
 
 
   var u = new SpeechSynthesisUtterance();
 
-  u.text = "I'm a little teapot, short and stout. Here's my handle, here's my spout."; // get main article text
+  u.text =document.getElementById("story").innerText; // get main article text
   u.lang = 'en-GB'; // get from BBC domain
-  u.rate = 1.3;
+  u.rate = 1;
 
   // window.speechSynthesis.speak(u);
 
