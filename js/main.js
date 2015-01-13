@@ -32,7 +32,7 @@ if ('speechSynthesis' in window) {
 
   u.text =document.getElementById("story").innerText; // get main article text
   u.lang = 'en-GB'; // get from BBC domain
-  u.rate = 1;
+  u.rate = 0.5;
 
   // window.speechSynthesis.speak(u);
 
