@@ -34,7 +34,7 @@ $( document ).ready(function() {
 
     u.rate = 0.9;
     if (iOS == true) {
-      u.rate = 0.5;
+      u.rate = 0.3;
     }
     u.lang = 'en-GB'; // get from BBC domain
     var createdVoiceList = false;
@@ -78,7 +78,7 @@ $( document ).ready(function() {
         })[0];
       }
 
-      
+
       if (window.speechSynthesis.paused) {
         window.speechSynthesis.resume(u);
         $('#status').text('Playing');
