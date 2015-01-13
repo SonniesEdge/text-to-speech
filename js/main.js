@@ -1,4 +1,4 @@
-(function(){
+$( document ).ready(function() {
 
   // var msg = new SpeechSynthesisUtterance("Hello World");
   // console.log(msg);
@@ -56,6 +56,14 @@ if ('speechSynthesis' in window) {
   });
 
 
+  $( "#voices li" ).click(function() {
+    console.log(this.innerHTML);
+    readingvoice = this.innerHTML;
+    u.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == readingvoice; })[0];;
+
+  });
+
+
   document.getElementById("play").onclick = function(){
     console.log('Paused:');
     console.log(window.speechSynthesis.paused);
@@ -82,4 +90,4 @@ if ('speechSynthesis' in window) {
 
 
 
-})();
+});
