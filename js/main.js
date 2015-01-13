@@ -20,6 +20,7 @@
 if ('speechSynthesis' in window) {
   console.log('Speech synthesis supported!😎');
 
+  var readingvoice = "Fiona";
 
   var voices = speechSynthesis.getVoices();
 
@@ -31,7 +32,7 @@ if ('speechSynthesis' in window) {
   u.text = document.getElementById("story").innerText; // get main article text
   u.lang = 'en-GB'; // get from BBC domain
   u.rate = 0.9;
-  u.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Fiona'; })[0];
+  u.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == readingvoice; })[0];
 
   if (iOS == true) {
     u.rate = 0.3;
@@ -45,6 +46,13 @@ if ('speechSynthesis' in window) {
 
   speechSynthesis.getVoices().forEach(function(voice) {
     console.log(voice.name, voice.default ? '(default)' :'');
+
+    var node = document.getElementById('voices');
+    var newNode = document.createElement('li');
+    newNode.appendChild(document.createTextNode(voice.name, voice.default ? '(default)' :''));
+    node.appendChild(newNode);
+
+
   });
 
 
@@ -52,12 +60,12 @@ if ('speechSynthesis' in window) {
     console.log('Paused:');
     console.log(window.speechSynthesis.paused);
     console.log('Playing:');
-    console.log(window.speechSynthesis.playing);
+    console.log(window.speechSynthesis.speaking);
 
 
     if (window.speechSynthesis.paused) {
       window.speechSynthesis.resume(u);
-    } else if (window.speechSynthesis.playing) {
+    } else if (window.speechSynthesis.speaking) {
       window.speechSynthesis.pause();
     } else {
       window.speechSynthesis.speak(u);
