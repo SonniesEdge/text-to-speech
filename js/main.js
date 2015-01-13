@@ -60,9 +60,16 @@ if ('speechSynthesis' in window) {
     console.log(this.innerHTML);
     readingvoice = this.innerHTML;
     u.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == readingvoice; })[0];;
-
+    $('#voice').text(this.innerHTML);
   });
 
+  if (window.speechSynthesis.paused) {
+    $('#status').text('Paused');
+  } else if (window.speechSynthesis.speaking) {
+    $('#status').text('Speaking');
+  } else {
+    $('#status').text('Stopped');
+  }
 
   document.getElementById("play").onclick = function(){
     console.log('Paused:');
@@ -73,10 +80,14 @@ if ('speechSynthesis' in window) {
 
     if (window.speechSynthesis.paused) {
       window.speechSynthesis.resume(u);
+      $('#status').text('Playing');
+
     } else if (window.speechSynthesis.speaking) {
       window.speechSynthesis.pause();
+      $('#status').text('Paused');
     } else {
       window.speechSynthesis.speak(u);
+      $('#status').text('Playing');
     }
   };
 
