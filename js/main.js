@@ -12,7 +12,13 @@ if ('speechSynthesis' in window) {
 
   var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );
 
-
+  var SpeechSynthesisVoice  = {
+    default: true, 
+    localService: false,
+    lang: "en-US",
+    name: "Google US English",
+    voiceURI: "Google US English"
+    }
 
   var u = new SpeechSynthesisUtterance();
 

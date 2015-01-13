@@ -45,9 +45,17 @@ $( document ).ready(function() {
     }
 
     u.onerror = function(event) {
-      console.log('An error occured with TTS.')
+      console.log('An error occured with TTS.');
     };
 
+    u.onstart = function(event) {
+      console.log('Speech started');
+    };
+
+    u.onend = function(event) {
+      console.log(event);
+      console.log('Finished in ' + event.elapsedTime + ' milliseconds.');
+    };
 
 
     document.getElementById("play").onclick = function(){
