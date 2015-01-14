@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.log('Speech synthesis supported!😎');
     document.getElementById("js-websynth").style.display = 'block';
     var debug = document.getElementById('ws-debug');
-    debug.innerHTML = debug.innerHTML + 'Speech synthesis supported';
+    debug.innerHTML = debug.innerHTML + 'Speech synthesis supported\n';
 
 
 
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       console.log(nodeArray[i]);
     }
 
-    console.log(nodeArray);
+    // console.log(nodeArray);
 
 // bedtimestory = nodeArray;
 
@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var createdVoiceList = false;
 
     var addVoices = function() {
+      debug.innerHTML = debug.innerHTML + 'loading voices\n';
       var select = '';
       var voices = window.speechSynthesis.getVoices();
       if (voices.length && !createdVoiceList) {
@@ -93,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     if ('onvoiceschanged' in window.speechSynthesis) {
       window.speechSynthesis.onvoiceschanged = function(e) {
+        debug.innerHTML = debug.innerHTML + 'Voices event fired\n';
         addVoices();
       };
     } else {
