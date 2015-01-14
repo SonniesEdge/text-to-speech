@@ -1,4 +1,4 @@
-// jQuery( document ).ready(function() {
+// $( document ).ready(function() {
 
   // SETTINGS
   var readingvoice = "Fiona";
@@ -13,7 +13,7 @@
 
     var u = new SpeechSynthesisUtterance();
     // bedtimestory = document.getElementById("story").innerText; // get main article text
-    bedtimestory = jQuery('.story-body__inner').innerText;
+    bedtimestory = $('.story-body__inner').innerText;
     // bedtimestory = "I'm a little teapot, short and stout. Here's my handle, here's my spout."
     u.text = bedtimestory;
 
@@ -28,11 +28,11 @@
       var select = '';
       var voices = window.speechSynthesis.getVoices();
       if (voices.length && !createdVoiceList) {
-        var select = jQuery('<select/>', {'class':'speakContentVoice'});
+        var select = $('<select/>', {'class':'speakContentVoice'});
         voices.forEach(function(v) {
-          select.append(jQuery('<option/>').val(v.name).text(v.name).prop('selected', v.default));
+          select.append($('<option/>').val(v.name).text(v.name).prop('selected', v.default));
         });
-        jQuery('#ws-speechUI').append(select);
+        $('#ws-speechUI').append(select);
         createdVoiceList = true;
       }
     };
@@ -65,13 +65,13 @@
       // console.log('Playing:');
       // console.log(window.speechSynthesis.speaking);
 
-      var useVoice = jQuery('select.speakContentVoice option:selected').val();
+      var useVoice = $('select.speakContentVoice option:selected').val();
       console.log(useVoice);
       if (useVoice) {
         u.voice = speechSynthesis.getVoices().filter(function(voice){
           return voice.name == useVoice;
         })[0];
-        jQuery('#ws-voice').text(u.voice.name);
+        $('#ws-voice').text(u.voice.name);
       }
 
       console.log(u.voice);
@@ -79,19 +79,19 @@
 
       if (window.speechSynthesis.paused) {
         window.speechSynthesis.resume(u);
-        jQuery('#ws-status').text('Playing');
+        $('#ws-status').text('Playing');
       } else if (window.speechSynthesis.speaking) {
         window.speechSynthesis.pause(u);
-        jQuery('#ws-status').text('Paused');
+        $('#ws-status').text('Paused');
       } else {
         window.speechSynthesis.speak(u);
-        jQuery('#ws-status').text('Playing');
+        $('#ws-status').text('Playing');
       }
     };
 
     document.getElementById("ws-cancel").onclick = function(){
       window.speechSynthesis.cancel();
-      jQuery('#ws-status').text('Cancelled');
+      $('#ws-status').text('Cancelled');
     }
 
 
