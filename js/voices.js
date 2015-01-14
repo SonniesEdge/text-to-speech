@@ -1,4 +1,4 @@
-jQuery( document ).ready(function() {
+// jQuery( document ).ready(function() {
 
   // SETTINGS
   var readingvoice = "Fiona";
@@ -102,4 +102,4 @@ jQuery( document ).ready(function() {
 
 
 
-});
+// });
