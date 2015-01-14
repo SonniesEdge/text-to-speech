@@ -30,11 +30,11 @@
       if (voices.length && !createdVoiceList) {
 
 
-        var myDiv = document.getElementById("ws-speechUI");
+        var selectdiv = document.getElementById("ws-speechUI");
         //Create and append select list
         var selectList = document.createElement("select");
-        selectList.id = "voices";
-        myDiv.appendChild(selectList);
+        selectList.id = "ws-voicelist";
+        selectdiv.appendChild(selectList);
 
         //Create and append the options
         for (var i = 0; i < voices.length; i++) {
@@ -88,7 +88,7 @@
       // console.log(window.speechSynthesis.speaking);
 
       // var useVoice = $('select.speakContentVoice option:selected').val();
-      var useVoice = getSelectedText('voices');
+      var useVoice = getSelectedText('ws-voicelist');
       console.log(useVoice);
       if (useVoice) {
         u.voice = speechSynthesis.getVoices().filter(function(voice){
