@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     var u = new SpeechSynthesisUtterance();
     // bedtimestory = document.getElementById("story").innerText; // get main article text
-    bedtimestory = document.getElementsByClassName('story-body')[0].innerText;
+    bedtimestory = document.getElementsByClassName('story-body__inner')[0].innerText;
 
     // var controls = document.createElement("div");
     // controls.innerHTML('<p>some dynamic html</p>');
