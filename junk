@@ -1,0 +1,33 @@
+
+    var getstoryitems = function () {
+      console.log('get story items');
+      var boxes = document.getElementsByClassName('story-body__inner'),
+      i = boxes.length;
+
+      console.log(boxes);
+      console.log(i);
+      while(i--) {
+        console.log(boxes[i].getElementsByTagName('p'));
+
+        return boxes[i].getElementsByTagName('p');
+      }
+    }
+
+
+    var stories = getstoryitems();
+
+    var processstoryitems = function (stories) {
+      i = stories.length;
+      while(i--) {
+        console.log(stories[i]);
+        u.text = stories[i];
+        var u = new SpeechSynthesisUtterance();
+        u.rate = 0.9;
+        if (iOS == true) {
+          u.rate = 0.3;
+        }
+        u.lang = 'en-GB'; // get from BBC domain
+      }
+    }
+
+    processstoryitems(stories);
