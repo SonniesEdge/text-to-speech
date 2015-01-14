@@ -28,11 +28,13 @@
       var select = '';
       var voices = window.speechSynthesis.getVoices();
       if (voices.length && !createdVoiceList) {
-
+        console.log(voices.length);
 
         var selectdiv = document.getElementById("ws-speechUI");
+        console.log(selectdiv);
         //Create and append select list
         var selectList = document.createElement("select");
+        console.log(selectList);
         selectList.id = "ws-voicelist";
         selectdiv.appendChild(selectList);
 
