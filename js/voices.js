@@ -32,7 +32,7 @@ $( document ).ready(function() {
         voices.forEach(function(v) {
           select.append($('<option/>').val(v.name).text(v.name).prop('selected', v.default));
         });
-        $('#speechUI').append(select);
+        $('#ws-speechUI').append(select);
         createdVoiceList = true;
       }
     };
@@ -71,7 +71,7 @@ $( document ).ready(function() {
         u.voice = speechSynthesis.getVoices().filter(function(voice){
           return voice.name == useVoice;
         })[0];
-        $('#voice').text(u.voice.name);
+        $('#ws-voice').text(u.voice.name);
       }
 
       console.log(u.voice);
@@ -79,19 +79,19 @@ $( document ).ready(function() {
 
       if (window.speechSynthesis.paused) {
         window.speechSynthesis.resume(u);
-        $('#status').text('Playing');
+        $('#ws-status').text('Playing');
       } else if (window.speechSynthesis.speaking) {
         window.speechSynthesis.pause(u);
-        $('#status').text('Paused');
+        $('#ws-status').text('Paused');
       } else {
         window.speechSynthesis.speak(u);
-        $('#status').text('Playing');
+        $('#ws-status').text('Playing');
       }
     };
 
     document.getElementById("cancel").onclick = function(){
       window.speechSynthesis.cancel();
-      $('#status').text('Cancelled');
+      $('#ws-status').text('Cancelled');
     }
 
 
