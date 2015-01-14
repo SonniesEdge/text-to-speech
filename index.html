@@ -14,17 +14,19 @@
     <body>
       <div class="container">
         <h1 class="page-header">Text-to-speech</h1>
-        <p class="lead">Demo of text-to-speech API</p>
+        <p class="lead">Demo utilising the Web Synthesis text-to-speech API</p>
 
-          <h2>Controls</h2>
-          <div class="well">
-            <div id="speechUI">
 
-            </div>
+        <div class="well">
           <button id="play" class="btn btn-default">Play/Pause</button>
           <button id="cancel" class="btn btn-default">Cancel</button>
-          <p>Status: <span id="status">null</span></p>
-          <p>Voice: <span id="voice">null</span></p>
+          <div id="speechUI">
+
+          </div>
+          <ul>
+            <li><strong>Status:</strong> <span id="status">null</span></li>
+            <li><strong>Voice:</strong> <span id="voice">null</span></li>
+          </ul>
         </div>
 
 

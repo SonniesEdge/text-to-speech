@@ -31,7 +31,7 @@ $( document ).ready(function() {
         voices.forEach(function(v) {
           select.append($('<option/>').val(v.name).text(v.name).prop('selected', v.default));
         });
-        $('div#speechUI').append(select);
+        $('#speechUI').append(select);
         createdVoiceList = true;
       }
     };
@@ -70,6 +70,7 @@ $( document ).ready(function() {
         u.voice = speechSynthesis.getVoices().filter(function(voice){
           return voice.name == useVoice;
         })[0];
+        $('#voice').text(u.voice.name);
       }
 
       console.log(u.voice);
