@@ -30,7 +30,7 @@
       if (voices.length && !createdVoiceList) {
         console.log(voices.length);
 
-        var selectdiv = document.getElementById("ws-speechUI");
+        var selectdiv = document.getElementById("ws-lister");
         console.log(selectdiv);
         //Create and append select list
         var selectList = document.createElement("select");
