@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   if ('speechSynthesis' in window) {
     console.log('Speech synthesis supported!😎');
     document.getElementById("js-websynth").style.display = 'block';
-
+    var debug = document.getElementById('ws-debug');
+    debug.innerHTML = debug.innerHTML + 'Speech synthesis supported';
 
 
 
