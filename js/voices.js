@@ -31,7 +31,7 @@
         console.log(voices.length);
 
         var selectdiv = document.getElementById("ws-lister");
-        console.log(selectdiv);
+        console.log('Selectdiv value:' + selectdiv);
         //Create and append select list
         var selectList = document.createElement("select");
         console.log(selectList);
