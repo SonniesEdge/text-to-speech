@@ -13,8 +13,8 @@
 
     var u = new SpeechSynthesisUtterance();
     // bedtimestory = document.getElementById("story").innerText; // get main article text
-    bedtimestory = $getElementsByClassName('.story-body__inner').innerText;
-    // bedtimestory = "I'm a little teapot, short and stout. Here's my handle, here's my spout."
+    // bedtimestory = document.getElementsByClassName('.story-body__inner').innerText;
+    bedtimestory = "I'm a little teapot, short and stout. Here's my handle, here's my spout."
     u.text = bedtimestory;
 
     u.rate = 0.9;
@@ -28,11 +28,32 @@
       var select = '';
       var voices = window.speechSynthesis.getVoices();
       if (voices.length && !createdVoiceList) {
-        var select = $('<select/>', {'class':'speakContentVoice'});
-        voices.forEach(function(v) {
-          select.append($('<option/>').val(v.name).text(v.name).prop('selected', v.default));
-        });
-        $('#ws-speechUI').append(select);
+
+
+        var myDiv = document.getElementById("ws-speechUI");
+        //Create and append select list
+        var selectList = document.createElement("select");
+        selectList.id = "voices";
+        myDiv.appendChild(selectList);
+
+        //Create and append the options
+        for (var i = 0; i < voices.length; i++) {
+          var option = document.createElement("option");
+          option.value = voices[i].name;
+          option.text = voices[i].name;
+          selectList.appendChild(option);
+
+
+          // voices[i].default;
+          // voices[i].localService;
+          // voices[i].lang;
+          // voices[i].name;
+          // voices[i].voiceURI;
+        }
+
+
+
+
         createdVoiceList = true;
       }
     };
@@ -60,18 +81,20 @@
 
 
     document.getElementById("ws-play").onclick = function(){
+      console.log('sdfsdfsd');
       // console.log('Paused:');
       // console.log(window.speechSynthesis.paused);
       // console.log('Playing:');
       // console.log(window.speechSynthesis.speaking);
 
-      var useVoice = $('select.speakContentVoice option:selected').val();
+      // var useVoice = $('select.speakContentVoice option:selected').val();
+      var useVoice = getSelectedText('voices');
       console.log(useVoice);
       if (useVoice) {
         u.voice = speechSynthesis.getVoices().filter(function(voice){
           return voice.name == useVoice;
         })[0];
-        document.getElementById('#ws-voice').innerHTML(u.voice.name);
+        document.getElementById('ws-voice').innerText = u.voice.name;
       }
 
       console.log(u.voice);
@@ -79,19 +102,19 @@
 
       if (window.speechSynthesis.paused) {
         window.speechSynthesis.resume(u);
-        document.getElementById('#ws-status').innerHTML('Playing');
+        document.getElementById('ws-status').innerText = 'Playing';
       } else if (window.speechSynthesis.speaking) {
         window.speechSynthesis.pause(u);
-        document.getElementById('#ws-status').innerHTML('Paused');
+        document.getElementById('ws-status').innerText = 'Paused';
       } else {
         window.speechSynthesis.speak(u);
-        document.getElementById('#ws-status').innerHTML('Playing');
+        document.getElementById('ws-status').innerText = 'Playing';
       }
     };
 
     document.getElementById("ws-cancel").onclick = function(){
       window.speechSynthesis.cancel();
-      document.getElementById('#ws-status').innerHTML('Cancelled');
+      document.getElementById('ws-status').innerText = 'Cancelled';
     }
 
 
@@ -101,5 +124,13 @@
   }
 
 
+  var getSelectedText = function (elementId) {
+    var elt = document.getElementById(elementId);
+
+    if (elt.selectedIndex == -1)
+      return null;
+
+      return elt.options[elt.selectedIndex].text;
+  }
 
 // });
