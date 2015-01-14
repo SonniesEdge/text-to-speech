@@ -59,7 +59,7 @@ $( document ).ready(function() {
     };
 
 
-    document.getElementById("play").onclick = function(){
+    document.getElementById("ws-play").onclick = function(){
       // console.log('Paused:');
       // console.log(window.speechSynthesis.paused);
       // console.log('Playing:');
