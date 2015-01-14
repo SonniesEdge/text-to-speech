@@ -13,7 +13,7 @@
 
     var u = new SpeechSynthesisUtterance();
     // bedtimestory = document.getElementById("story").innerText; // get main article text
-    bedtimestory = $('.story-body__inner').innerText;
+    bedtimestory = $getElementsByClassName('.story-body__inner').innerText;
     // bedtimestory = "I'm a little teapot, short and stout. Here's my handle, here's my spout."
     u.text = bedtimestory;
 
@@ -71,7 +71,7 @@
         u.voice = speechSynthesis.getVoices().filter(function(voice){
           return voice.name == useVoice;
         })[0];
-        $('#ws-voice').text(u.voice.name);
+        document.getElementById('#ws-voice').innerHTML(u.voice.name);
       }
 
       console.log(u.voice);
@@ -79,19 +79,19 @@
 
       if (window.speechSynthesis.paused) {
         window.speechSynthesis.resume(u);
-        $('#ws-status').text('Playing');
+        document.getElementById('#ws-status').innerHTML('Playing');
       } else if (window.speechSynthesis.speaking) {
         window.speechSynthesis.pause(u);
-        $('#ws-status').text('Paused');
+        document.getElementById('#ws-status').innerHTML('Paused');
       } else {
         window.speechSynthesis.speak(u);
-        $('#ws-status').text('Playing');
+        document.getElementById('#ws-status').innerHTML('Playing');
       }
     };
 
     document.getElementById("ws-cancel").onclick = function(){
       window.speechSynthesis.cancel();
-      $('#ws-status').text('Cancelled');
+      document.getElementById('#ws-status').innerHTML('Cancelled');
     }
 
 
