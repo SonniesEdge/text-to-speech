@@ -64,6 +64,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         // console.log(selectList);
         selectList.id = "ws-voicelist";
         selectdiv.appendChild(selectList);
+        var option = document.createElement("option");
+        selectList.appendChild(option);
 
         //Create and append the options
         for (var i = 0; i < voices.length; i++) {
@@ -118,6 +120,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
       // var useVoice = $('select.speakContentVoice option:selected').val();
       var useVoice = getSelectedText('ws-voicelist');
+      if (useVoice =='') {
+       useVoice = readingvoice;
+      }
+
       // console.log(useVoice);
       if (useVoice) {
         u.voice = speechSynthesis.getVoices().filter(function(voice){
