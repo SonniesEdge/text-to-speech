@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   if ('speechSynthesis' in window) {
     console.log('Speech synthesis supported!😎');
+    document.getElementById("js-websynth").style.display = 'block';
 
 
 
@@ -155,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   } else {
     console.log('Speech synthesis not supported ');
-    alert('Speech synthesis is not supported in this browser.😒');
+    // alert('Speech synthesis is not supported in this browser.😒');
   }
 
 
