@@ -133,6 +133,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById('ws-voice').innerText = u.voice.name;
       }
 
+      if (document.getElementById("ws-speed").value > 0) {
+        u.rate = document.getElementById("ws-speed").value;
+      }
+
       console.log(u.voice);
 
 
