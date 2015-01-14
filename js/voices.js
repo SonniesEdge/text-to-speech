@@ -89,7 +89,7 @@ $( document ).ready(function() {
       }
     };
 
-    document.getElementById("cancel").onclick = function(){
+    document.getElementById("ws-cancel").onclick = function(){
       window.speechSynthesis.cancel();
       $('#ws-status').text('Cancelled');
     }
