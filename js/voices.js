@@ -13,6 +13,7 @@ $( document ).ready(function() {
 
     var u = new SpeechSynthesisUtterance();
     bedtimestory = document.getElementById("story").innerText; // get main article text
+    bedtimestory = $('.story-body__inner').innerText;
     // bedtimestory = "I'm a little teapot, short and stout. Here's my handle, here's my spout."
     u.text = bedtimestory;
 
