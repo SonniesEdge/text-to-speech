@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+jQuery( document ).ready(function() {
 
   // SETTINGS
   var readingvoice = "Fiona";
@@ -13,7 +13,7 @@ $( document ).ready(function() {
 
     var u = new SpeechSynthesisUtterance();
     bedtimestory = document.getElementById("story").innerText; // get main article text
-    bedtimestory = $('.story-body__inner').innerText;
+    bedtimestory = jQuery('.story-body__inner').innerText;
     // bedtimestory = "I'm a little teapot, short and stout. Here's my handle, here's my spout."
     u.text = bedtimestory;
 
@@ -28,11 +28,11 @@ $( document ).ready(function() {
       var select = '';
       var voices = window.speechSynthesis.getVoices();
       if (voices.length && !createdVoiceList) {
-        var select = $('<select/>', {'class':'speakContentVoice'});
+        var select = jQuery('<select/>', {'class':'speakContentVoice'});
         voices.forEach(function(v) {
-          select.append($('<option/>').val(v.name).text(v.name).prop('selected', v.default));
+          select.append(jQuery('<option/>').val(v.name).text(v.name).prop('selected', v.default));
         });
-        $('#ws-speechUI').append(select);
+        jQuery('#ws-speechUI').append(select);
         createdVoiceList = true;
       }
     };
@@ -65,13 +65,13 @@ $( document ).ready(function() {
       // console.log('Playing:');
       // console.log(window.speechSynthesis.speaking);
 
-      var useVoice = $('select.speakContentVoice option:selected').val();
+      var useVoice = jQuery('select.speakContentVoice option:selected').val();
       console.log(useVoice);
       if (useVoice) {
         u.voice = speechSynthesis.getVoices().filter(function(voice){
           return voice.name == useVoice;
         })[0];
-        $('#ws-voice').text(u.voice.name);
+        jQuery('#ws-voice').text(u.voice.name);
       }
 
       console.log(u.voice);
@@ -79,19 +79,19 @@ $( document ).ready(function() {
 
       if (window.speechSynthesis.paused) {
         window.speechSynthesis.resume(u);
-        $('#ws-status').text('Playing');
+        jQuery('#ws-status').text('Playing');
       } else if (window.speechSynthesis.speaking) {
         window.speechSynthesis.pause(u);
-        $('#ws-status').text('Paused');
+        jQuery('#ws-status').text('Paused');
       } else {
         window.speechSynthesis.speak(u);
-        $('#ws-status').text('Playing');
+        jQuery('#ws-status').text('Playing');
       }
     };
 
     document.getElementById("ws-cancel").onclick = function(){
       window.speechSynthesis.cancel();
-      $('#ws-status').text('Cancelled');
+      jQuery('#ws-status').text('Cancelled');
     }
 
 
