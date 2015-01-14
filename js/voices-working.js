@@ -13,25 +13,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     var u = new SpeechSynthesisUtterance();
     // bedtimestory = document.getElementById("story").innerText; // get main article text
-
-
-
-
-
-    bedtime = document.getElementsByClassName('story-body__inner')[0].getElementsByTagName("p");
-    var bedtimestory = '';
-    var nodeArray = [];
-    for (var i = 0; i < bedtime.length; ++i) {
-
-      nodeArray[i] = bedtime[i].innerText;
-
-      bedtimestory = bedtimestory + bedtime[i].innerText + ' ';
-      console.log(nodeArray[i]);
-    }
-
-    console.log(nodeArray);
-
-// bedtimestory = nodeArray;
+    bedtimestory = document.getElementsByClassName('story-body__inner')[0].innerText;
 
     // var controls = document.createElement("div");
     // controls.innerHTML('<p>some dynamic html</p>');
@@ -55,13 +37,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
       var select = '';
       var voices = window.speechSynthesis.getVoices();
       if (voices.length && !createdVoiceList) {
-        // console.log(voices.length);
+        console.log(voices.length);
 
         var selectdiv = document.getElementById("ws-lister");
-        // console.log('Selectdiv value:' + selectdiv);
+        console.log('Selectdiv value:' + selectdiv);
         //Create and append select list
         var selectList = document.createElement("select");
-        // console.log(selectList);
+        console.log(selectList);
         selectList.id = "ws-voicelist";
         selectdiv.appendChild(selectList);
 
@@ -110,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
     document.getElementById("ws-play").onclick = function(){
-      // console.log('sdfsdfsd');
+      console.log('sdfsdfsd');
       // console.log('Paused:');
       // console.log(window.speechSynthesis.paused);
       // console.log('Playing:');
@@ -118,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
       // var useVoice = $('select.speakContentVoice option:selected').val();
       var useVoice = getSelectedText('ws-voicelist');
-      // console.log(useVoice);
+      console.log(useVoice);
       if (useVoice) {
         u.voice = speechSynthesis.getVoices().filter(function(voice){
           return voice.name == useVoice;
