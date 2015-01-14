@@ -13,8 +13,14 @@
 
     var u = new SpeechSynthesisUtterance();
     // bedtimestory = document.getElementById("story").innerText; // get main article text
-    bedtimestory = document.getElementsByClassName('story-body__inner')[0].innerText;
+    bedtimestory = document.getElementsByClassName('story-body')[0].innerText;
 
+    // var controls = document.createElement("div");
+    // controls.innerHTML('<p>some dynamic html</p>');
+    // bedtimestory.appendChild(option);
+
+    // bedtimestory.appendChild(controls);
+    // bedtimestory.insertBefore(controls,bedtimestory.firstChild);
 
     // console.log(bedtimestory);
     // bedtimestory = "I'm a little teapot, short and stout. Here's my handle, here's my spout."
