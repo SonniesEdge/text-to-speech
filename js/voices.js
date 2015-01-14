@@ -1,5 +1,5 @@
 // $( document ).ready(function() {
-
+document.addEventListener("DOMContentLoaded", function(event) {
   // SETTINGS
   var readingvoice = "Fiona";
   var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );
@@ -135,6 +135,7 @@
   }
 
 
+
   var getSelectedText = function (elementId) {
     var elt = document.getElementById(elementId);
 
@@ -144,4 +145,6 @@
       return elt.options[elt.selectedIndex].text;
   }
 
+
+});
 // });
